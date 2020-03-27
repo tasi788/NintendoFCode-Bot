@@ -1,6 +1,7 @@
 from configparser import ConfigParser
 
 configure = ConfigParser()
+configure.read('pyrogram.ini')
 
 
 def get(key: str, value: str, default: str = None):
