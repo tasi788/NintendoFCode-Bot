@@ -27,18 +27,13 @@ def addfc(client: Client, message: Message):
         message.reply_text(text)
         return
 
-    pattern = '(SW(-|\d)+)'
+    pattern = 'SW-\d{4}-\d{4}-\d{4}'
     re_result = re.findall(pattern, message.command[1].upper())
     if not isinstance(re_result, list):
-        text += '無法正常解析好友代碼，似乎輸入錯了？'
-        message.reply_text(text)
+        text += '無法正常解析好友代碼，似乎輸入錯了？\n' \
+                '範例：`SW-1234-2234-3234`'
+        message.reply_text(text, parse_mode='markdown')
         return
-    else:
-        if len(re_result[0][0]) != 17:
-            text += '無法正常解析好友代碼，似乎輸入錯了？\n' \
-                    '範例：`SW-1234-2234-3234`'
-            message.reply_text(text, parse_mode='markdown')
-            return
 
     # Success
     mongo = db_tools.use_mongo()
