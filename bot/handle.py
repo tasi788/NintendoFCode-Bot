@@ -8,7 +8,7 @@ level = configure.get('bot', 'logging')
 coloredlogs.install(level=level, logger=logger)
 
 
-def run(self):
+def run():
     app = Client("nintendo", config_file='pyrogram.ini',
                  plugins=dict(root='./bot/plugins'), workers=128)
     app.start()
