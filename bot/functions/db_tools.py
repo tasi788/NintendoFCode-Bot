@@ -15,14 +15,8 @@ coloredlogs.install(level=configure.get('logging', 'status'), logger=logger)
 
 def use_mongo(collection: Union[bool, str] = 'hexlightning', read_only: bool = False, read_nearest: bool = True):
     """
-    use_mongo 快速ㄉ取用可愛ㄉ資料庫。
+    use_mongo 快速ㄉ取用可愛ㄉ資料庫
     """
-    # read_preference how to talk with mongo
-    if read_nearest:
-        read_preference = ReadPreference.NEAREST
-    elif read_only:
-        read_preference = ReadPreference.SECONDARY_PREFERRED
-
     # make client
     try:
         mongo_url = configure.get('database', 'mongo')
