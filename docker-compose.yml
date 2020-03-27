@@ -1,0 +1,12 @@
+version: '2'
+services: 
+    bot: 
+        build: .
+        restart: unless-stopped
+        volumes: 
+            - ./:/app
+    mongo:
+        image: mongo
+        restart: unless-stopped
+        volumes: 
+            - ./database:/data/db
