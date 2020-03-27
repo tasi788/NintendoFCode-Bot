@@ -7,7 +7,7 @@ from pyrogram.errors import FloodWait
 from bot.functions import db_tools
 
 
-@Client.on_message(Filters.command(['addfc', 'add']))
+@Client.on_message(Filters.command(['addfc', 'add']) & ~(Filters.forwarded))
 def addfc(client: Client, message: Message):
     # Failure
     if len(message.command) != 2:
