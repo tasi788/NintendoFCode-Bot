@@ -2,3 +2,7 @@
 pyrogram.ini
 
 .vscode
+
+__pycache__/
+
+*.session
