@@ -3,14 +3,14 @@ jobs:
  build:
    machine: true
    steps:
-      - checkout
-      - run: 
+     - checkout
+     - run: 
         name: Install Docker Compose
           command: |
             set -x
             curl -L https://github.com/docker/compose/releases/download/1.25.3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
             chmod +x /usr/local/bin/docker-compose
-      - run: 
+     - run:
         name: Build
           command: |
             docker-compose build
