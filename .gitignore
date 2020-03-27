@@ -8,3 +8,5 @@ __pycache__/
 *.session
 
 coverage.xml
+
+.coverage
