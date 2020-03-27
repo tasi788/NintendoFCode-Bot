@@ -13,6 +13,7 @@ jobs:
       with:
         python-version: 3.7
     - name: Generate coverage report
+      continue-on-error: true
       run: |
         pip install pipenv pytest pytest-cov
         pipenv run pip freeze > requirements.txt
