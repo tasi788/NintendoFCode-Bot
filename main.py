@@ -1,4 +1,5 @@
 from bot import handle
 
 if __name__ == "__main__":
-    pass
+    app = handle.handle()
+    app.run()
