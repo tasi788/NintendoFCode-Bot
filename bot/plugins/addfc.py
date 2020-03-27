@@ -29,7 +29,7 @@ def addfc(client: Client, message: Message):
 
     pattern = 'SW-\d{4}-\d{4}-\d{4}'
     re_result = re.findall(pattern, message.command[1].upper())
-    if not isinstance(re_result, list):
+    if not re_result:
         text += '無法正常解析好友代碼，似乎輸入錯了？\n' \
                 '範例：`SW-1234-2234-3234`'
         message.reply_text(text, parse_mode='markdown')
