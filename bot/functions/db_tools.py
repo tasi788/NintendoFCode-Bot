@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 coloredlogs.install(level=configure.get('logging', 'status'), logger=logger)
 
 
-def use_mongo(collection: Union[bool, str] = 'hexlightning', read_only: bool = False, read_nearest: bool = True):
+def use_mongo(collection: Union[bool, str] = 'nintendo'):
     """
     use_mongo 快速ㄉ取用可愛ㄉ資料庫
     """
