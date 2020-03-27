@@ -6,6 +6,8 @@ from .functions import configure
 logger = logging.getLogger(__name__)
 level = configure.get('bot', 'logging')
 coloredlogs.install(level=level, logger=logger)
+
+
 class handle:
     def __init__(self):
         pass
