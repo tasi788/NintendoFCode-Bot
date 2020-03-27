@@ -6,3 +6,5 @@ pyrogram.ini
 __pycache__/
 
 *.session
+
+coverage.xml
