@@ -1,11 +1,13 @@
 from pyrogram import InlineKeyboardButton, InlineKeyboardMarkup
 
 
-def myfc():
+def privacy():
     keyboard = [
         [
             InlineKeyboardButton(
-                '新增自己的', url='t.me/NintendoFCode_bot?start=addfc')
+                '✅ 開啟', callback_data='set privacy on'),
+            InlineKeyboardButton(
+                '❌ 關閉', callback_data='set privacy off')
         ]
     ]
     return InlineKeyboardMarkup(keyboard)
