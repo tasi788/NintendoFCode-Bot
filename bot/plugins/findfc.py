@@ -31,6 +31,7 @@ def findfc(client: Client, message: Message):
             return
 
         # ready to go.
+        user_id = None
         while True:
             try:
                 user_id = client.get_users(username).id
