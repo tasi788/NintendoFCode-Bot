@@ -14,7 +14,7 @@ def check_func(_, message: Message):
 
 
 @Client.on_message(Filters.create(check_func))
-def help(client: Client, message: Message):
+def helpme(client: Client, message: Message):
     text = '使用方式：\n' \
         '更新或新增您的好友代碼\n' \
         '範例：`/add SW-XXXX-XXXX-XXXX-XXXX`\n' \
