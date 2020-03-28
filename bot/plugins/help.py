@@ -1,5 +1,4 @@
-from pyrogram import Client, Message, Filters
-from pyrogram.errors import FloodWait
+from pyrogram import Client, Filters, Message
 
 
 def check_func(_, message: Message):
@@ -10,6 +9,8 @@ def check_func(_, message: Message):
     if Filters.command('start')(message):
         if len(message.command) == 1:
             return True
+    if Filters.edited(message):
+        return False
 
 
 @Client.on_message(Filters.create(check_func))

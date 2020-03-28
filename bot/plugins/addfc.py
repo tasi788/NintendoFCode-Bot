@@ -1,13 +1,12 @@
-import re
 import copy
-from time import sleep
-from pyrogram import Client, Message, Filters
-from pyrogram.errors import FloodWait
+import re
+
+from pyrogram import Client, Filters, Message
 
 from bot.functions import db_tools
 
 
-@Client.on_message(Filters.command(['addfc', 'add']) & ~(Filters.forwarded))
+@Client.on_message(Filters.command(['addfc', 'add']) & ~(Filters.forwarded) & ~(Filters.edited))
 def addfc(client: Client, message: Message):
     # Failure
     if len(message.command) != 2:
@@ -48,7 +47,7 @@ def addfc(client: Client, message: Message):
     update = {'$set': query_}
     try:
         mongo.nintendo.update_one(query, update, upsert=True)
-    except:
+    except Exception:
         text = '不明原因的失敗惹！'
         message.reply_text(text)
     else:

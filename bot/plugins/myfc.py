@@ -1,9 +1,9 @@
-from pyrogram import Client, Message, Filters
-from pyrogram.errors import FloodWait
+from pyrogram import Client, Filters, Message
+
 from bot.functions import db_tools, keyboard
 
 
-@Client.on_message(Filters.command('myfc') & ~(Filters.forwarded))
+@Client.on_message(Filters.command('myfc') & ~(Filters.forwarded) & ~(Filters.edited))
 def myfc(client: Client, message: Message):
     mongo = db_tools.use_mongo()
     query = {'chat.id': message.from_user.id}

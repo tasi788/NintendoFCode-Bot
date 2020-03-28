@@ -1,5 +1,5 @@
-from pyrogram import Client, Message, Filters
-from pyrogram.errors import FloodWait
+from pyrogram import Client, Filters, Message
+
 from bot.functions import db_tools
 
 
@@ -11,6 +11,8 @@ def check_func(_, message: Message):
             return False
         if message.command[1].lower() == 'addfc':
             return True
+    if Filters.edited(message):
+        return False
 
 
 @Client.on_message(Filters.create(check_func))
