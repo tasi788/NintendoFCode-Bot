@@ -96,13 +96,6 @@
             "index": "pypi",
             "version": "==3.10.1"
         },
-        "pyreadline": {
-            "hashes": [
-                "sha256:4530592fc2e85b25b1a9f79664433da09237c1a270e4d78ea5aa3a2c7229e2d1"
-            ],
-            "markers": "sys_platform == 'win32'",
-            "version": "==2.1"
-        },
         "pyrogram": {
             "hashes": [
                 "sha256:17e3c7faef40e967e6a5dfe63aeab2664ee187be7ba78b0d7f6b15769654b4ce",
