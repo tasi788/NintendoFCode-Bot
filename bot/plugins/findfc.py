@@ -1,4 +1,3 @@
-import json
 from time import sleep
 from collections import namedtuple
 from pyrogram import Client, Filters, Message
