@@ -10,3 +10,5 @@ services:
         restart: unless-stopped
         volumes: 
             - ./database:/data/db
+        ports: 
+            - 27017:27017
