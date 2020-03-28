@@ -13,9 +13,7 @@ coloredlogs.install(level=configure.get('logging', 'status'), logger=logger)
 
 
 def use_mongo(collection: Union[bool, str] = 'nintendo'):
-    """use_mongo,
-    快速ㄉ取用可愛ㄉ資料庫
-    """
+    """use_mongo 快速ㄉ取用可愛ㄉ資料庫."""
     # make client
     try:
         mongo_url = configure.get('database', 'mongo')
