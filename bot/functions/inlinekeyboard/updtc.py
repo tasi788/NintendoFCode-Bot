@@ -1,18 +1,28 @@
 from typing import Union
-from pyrogram import InlineQueryResultArticle, InputMessageContent
-from ..keyboard import updtc
+from pyrogram import InlineQueryResultArticle, InputTextMessageContent, InlineKeyboardButton, InlineKeyboardMarkup
 
 
-def updtc(price: str):
-    if price.isdigit():
-        text = InputMessageContent('我的大頭菜價格是：{price}'.format(price=price))
-        keyboard = updtc(int(price))
+def inline_keyboard(price: int):
+    keyboard = [
+        [
+            InlineKeyboardButton(
+                '✅ 確定', callback_data='set updtc {price}'.format(price=price))
+        ]
+    ]
+    return InlineKeyboardMarkup(keyboard)
+
+
+def updtc(price: int = 0):
+    if price:
+        text = InputTextMessageContent(
+            '我的大頭菜價格是：`{price}`'.format(price=price), parse_mode='markdown')
+        keyboard = inline_keyboard(price)
     else:
-        text = InputMessageContent('婐 4 北七，我不知道甚麼 4 數字')
+        text = InputTextMessageContent('婐 4 北七，我不知道甚麼 4 數字')
         keyboard = None
 
     result = [
         InlineQueryResultArticle(
-            text=text, description='更新大頭菜價格', reply_markup=keyboard)
+            input_message_content=text, title='更新大頭菜價格', reply_markup=keyboard)
     ]
     return result
