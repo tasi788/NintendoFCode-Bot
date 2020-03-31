@@ -1,5 +1,3 @@
-from typing import Union
-
 from pyrogram import (InlineKeyboardButton, InlineKeyboardMarkup,
                       InlineQueryResultArticle, InputTextMessageContent)
 
