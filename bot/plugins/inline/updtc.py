@@ -1,9 +1,4 @@
-"""
-更新大頭菜價格。
-"""
-
-from pyrogram import (InlineQuery, Client, Filters, InlineKeyboardButton,
-                      InlineKeyboardMarkup)
+from pyrogram import Client, Filters, InlineQuery
 
 from bot.functions import inlinekeyboard
 
