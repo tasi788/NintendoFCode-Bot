@@ -4,21 +4,22 @@ from bot.functions import inlinekeyboard
 
 
 def check_func(_, inline_query: InlineQuery):
-    """@NintendoFCode_bot updtc 547"""
+    """@NintendoFCode_bot acnh veg 547"""
     data = inline_query.query.split()
-    if len(data) != 2:
+    if len(data) != 3:
         return False
-    if data[0] == 'updtc':
+    if data[0:2] == ['acnh', 'veg']:
         return True
 
 
 @Client.on_inline_query(Filters.create(check_func))
-def updtc(client: Client, inline_query: InlineQuery):
+def veg(client: Client, inline_query: InlineQuery):
     data = inline_query.query.split()
-    price = data[1]
+    price = data[-1]
     if price.isdigit():
-        keyboard = inlinekeyboard.updtc(int(price))
+        price = int(price)
     else:
-        keyboard = inlinekeyboard.updtc()
-    # TODO: 檢測 reply_markup
+        price = 0
+
+    keyboard = inlinekeyboard.veg(inline_query.from_user.id, int(price))
     inline_query.answer(keyboard, cache_time=0)

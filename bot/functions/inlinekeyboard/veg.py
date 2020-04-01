@@ -4,17 +4,17 @@ from pyrogram import (InlineKeyboardButton, InlineKeyboardMarkup,
 from .. import configure
 
 
-def inline_keyboard(price: int):
+def inline_keyboard(user_id: int, price: int):
     keyboard = [
         [
             InlineKeyboardButton(
-                '✅ 確定', callback_data='set updtc {price}'.format(price=price))
+                '✅ 確定', callback_data='set acnh veg {price} {user_id}'.format(price=price, user_id=user_id))
         ]
     ]
     return InlineKeyboardMarkup(keyboard)
 
 
-def updtc(price: int = 0):
+def veg(user_id: int = 0, price: int = 0):
     if price:
         text = InputTextMessageContent(
             '我的大頭菜價格是：`{price}`'.format(price=price), parse_mode='markdown')
