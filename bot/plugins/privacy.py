@@ -14,7 +14,7 @@ def privacy(client: Client, message: Message):
     query = {'chat.id': message.from_user.id}
     query_result = mongo.nintendo.find_one(query)
     if not isinstance(query_result, dict):
-        text = '請先使用 `/addfc` 來新增自己的好友代碼吧！\n'
+        text = '進行隱私設定前，請先使用 `/addfc` 來新增自己的好友代碼吧！\n'
         message.reply_text(text, parse_mode='markdown')
         return
 
