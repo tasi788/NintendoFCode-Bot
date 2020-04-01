@@ -18,7 +18,7 @@ def veg(user_id: int = 0, price: int = 0):
     if price:
         text = InputTextMessageContent(
             '我的大頭菜價格是：`{price}`'.format(price=price), parse_mode='markdown')
-        keyboard = inline_keyboard(price)
+        keyboard = inline_keyboard(user_id, price)
     else:
         text = InputTextMessageContent('婐 4 北七，我不知道甚麼 4 數字')
         keyboard = None
