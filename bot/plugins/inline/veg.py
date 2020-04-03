@@ -4,7 +4,7 @@ from bot.functions import inlinekeyboard
 
 
 def check_func(_, inline_query: InlineQuery):
-    """@NintendoFCode_bot acnh veg 547"""
+    # @NintendoFCode_bot acnh veg 547
     data = inline_query.query.split()
     if len(data) != 3:
         return False

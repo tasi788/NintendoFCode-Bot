@@ -14,7 +14,6 @@ timezone = tz.gettz('Asia/Taipei')
 
 @Client.on_message(Filters.command('acnh') & ~(Filters.edited) & ~(Filters.forwarded))
 def veg(client: Client, message: Message):
-    """ /acnh veg 123 """
     if len(message.command) < 2:
         return
     if len(message.command) < 3:
