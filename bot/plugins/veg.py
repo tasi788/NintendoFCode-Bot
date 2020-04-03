@@ -7,7 +7,7 @@ from pyrogram import Client, Filters, Message
 
 from ..functions import check_fcode, db_tools
 from ..types import user as users
-from ..types import acnh
+from ..types import acnh, VegData
 
 timezone = tz.gettz('Asia/Taipei')
 
@@ -39,15 +39,27 @@ def veg(client: Client, message: Message):
     if now.hour > 12:
         # 下午惹
         hour = 12
-    now = now.replace(hour=hour, minute=0, second=0)
-    if not hasattr(user, 'acnh'):
+    now = now.replace(hour=hour, minute=0, second=0, microsecond=0)
+    if not user:
         message.reply_text('請先使用 /bindgame 來綁定動物森友會吧！')
         return
     if user.acnh.veg:
-        for vegs in len(user.acnh.veg):
+        for vegs in range(len(user.acnh.veg)):
             if user.acnh.veg[vegs].date == now:
                 user.acnh.veg.pop(vegs)
         if len(user.acnh.veg) >= 14:
             user.acnh.veg.pop(-1)
+        user.acnh.veg.append(VegData(date=now, price=price))
+    else:
+        user.acnh.veg = [VegData(date=now, price=price)]
 
-    new_veg_data = asdict(acnh.VegData(date=now, price=price))
+    vegs = asdict(user.acnh)['veg']
+    mongo_update = {'$set': {'acnh.veg': vegs}}
+    mongo.nintendo.update_one(mongo_query, mongo_update)
+    text = '#動森友 #AnimalCrossing\n' \
+           '大頭菜價格：`{price}` 鈴錢\n' \
+           '好友代碼：`{fcode}`'.format(
+               price=price,
+               fcode=user.fcode
+           )
+    message.reply_text(text)
