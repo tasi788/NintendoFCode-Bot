@@ -1,5 +1,5 @@
 from pyrogram import Client, CallbackQuery, Filters
-from ...functions import keyboard, inlinekeyboard
+from ...functions import inlinekeyboard
 # bindgame acnh
 
 

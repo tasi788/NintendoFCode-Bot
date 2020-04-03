@@ -1,7 +1,6 @@
 from pyrogram import Client, Filters, Message
 
 from ..functions import keyboard
-from ..game import gamelist
 
 
 def check_func(_, message: Message):
