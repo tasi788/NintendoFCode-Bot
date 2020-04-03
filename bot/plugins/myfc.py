@@ -9,7 +9,7 @@ def myfc(client: Client, message: Message):
     query = {'chat.id': message.from_user.id}
     query_result = mongo.nintendo.find_one(query)
     if not isinstance(query_result, dict):
-        text = '請先使用 `/addfc` 來新增自己的好友代碼吧！\n'
+        text = '你沒有設定過好友代碼唷，請先使用 `/addfc` 來新增自己的好友代碼吧！\n'
         message.reply_text(text, parse_mode='markdown')
         return
 
