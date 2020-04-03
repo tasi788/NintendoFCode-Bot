@@ -5,7 +5,7 @@ def bindacnh(share=False):
     if share:
         text = '我也想綁定動森友資料！'
     else:
-        '🔗 開始綁定'
+        text = '🔗 開始綁定'
     keyboard = [
         [
             InlineKeyboardButton(
