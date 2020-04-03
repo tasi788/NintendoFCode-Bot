@@ -5,9 +5,9 @@ from dacite import from_dict
 from dateutil import tz
 from pyrogram import Client, Filters, Message
 
-from ..functions import check_fcode, db_tools
+from ..functions import check_fcode, db_tools, keyboard
+from ..types import VegData, acnh
 from ..types import user as users
-from ..types import acnh, VegData
 
 timezone = tz.gettz('Asia/Taipei')
 
@@ -62,4 +62,4 @@ def veg(client: Client, message: Message):
                price=price,
                fcode=user.fcode
            )
-    message.reply_text(text)
+    message.reply_text(text, reply_markup=keyboard.veg())

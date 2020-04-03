@@ -31,6 +31,13 @@ def acnh(client: Client, message: Message):
     parser.add_argument('-f', type=str)
     args = parser.parse_args(message.command[2:])
 
+    # 二次檢查水果，我教官我機掰 耶
+    if args.f not in ['梨子', '櫻桃', '蘋果', '桃子', '橘子']:
+        text = '水果種類有誤，請檢查下狸！\n' \
+            '每個人島上的水果特產種類應該是 「梨子、櫻桃、蘋果、桃子、橘子」 其中一種喔！'
+        message.reply_text(text)
+        return
+
     mongo = db_tools.use_mongo()
     mongo_query = {'chat.id': message.from_user.id}
     mongo_update = {'$set': {'acnh.name': args.n, 'acnh.fruit': args.f}}
@@ -52,4 +59,5 @@ def acnh(client: Client, message: Message):
             fruit=user.acnh.fruit,
             fcode=user.fcode
         )
-    message.reply_text(text)
+
+    message.reply_text(text, reply_markup=keyboard.bindacnh(share=True))
