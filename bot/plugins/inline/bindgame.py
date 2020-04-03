@@ -4,9 +4,11 @@ from bot.functions import inlinekeyboard
 
 
 def check_func(_, inline_query: InlineQuery):
-    """@NintendoFCode_bot bindgame"""
     data = inline_query.query.split()
-    if data[0] == 'bindgame':
+
+    if not len(data) >= 1:
+        return
+    if data[0:2] == ['select', 'bindgame']:
         return True
 
 
