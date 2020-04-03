@@ -5,12 +5,15 @@ verify_ssl = true
 
 [dev-packages]
 autopep8 = "*"
+jupyter = "*"
+notebook = "*"
 
 [packages]
 coloredlogs = "*"
 pyrogram = "*"
 pymongo = "*"
 tgcrypto = "*"
+dacite = "*"
 
 [requires]
 python_version = "3.7"
