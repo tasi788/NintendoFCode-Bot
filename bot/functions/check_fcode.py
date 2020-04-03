@@ -2,7 +2,6 @@ from typing import Union
 
 from pyrogram import User
 
-from ..types import user as users
 from .db_tools import use_mongo
 
 
