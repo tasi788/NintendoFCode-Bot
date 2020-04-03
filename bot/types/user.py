@@ -11,8 +11,6 @@ class Chat:
 @dataclass
 class User:
     chat: Chat = field(hash=False, repr=True, compare=False, default=None)
-
-
-@dataclass
-class Acnh:
+    fcode: str = field(hash=False, repr=True, compare=False, default=None)
+    privacy: bool = field(hash=False, repr=True, compare=False, default=False)
     acnh: ACNH = field(hash=False, repr=True, compare=False, default=None)
