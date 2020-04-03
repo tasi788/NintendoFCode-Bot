@@ -3,6 +3,7 @@ from html import escape
 
 from dacite import from_dict
 from pyrogram import Client, Filters, Message
+from pyrogram.errors import BadRequest, Forbidden
 
 from ...functions import db_tools, keyboard
 from ...types import user as users
@@ -25,6 +26,11 @@ def acnh(client: Client, message: Message):
         text = '那我們就快點開始吧狸！'
         message.reply_text(text, reply_markup=keyboard.bindacnh())
         return
+
+    try:
+        message.delete()
+    except (BadRequest, Forbidden):
+        pass
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-n', type=str)

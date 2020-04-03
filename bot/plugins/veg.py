@@ -4,6 +4,7 @@ from datetime import datetime
 from dacite import from_dict
 from dateutil import tz
 from pyrogram import Client, Filters, Message
+from pyrogram.errors import BadRequest, Forbidden
 
 from ..functions import check_fcode, db_tools, keyboard
 from ..types import VegData
@@ -24,6 +25,11 @@ def veg(client: Client, message: Message):
         text = '請先使用 `/addfc` 來新增自己的好友代碼吧！\n'
         message.reply_text(text, parse_mode='markdown')
         return
+
+    try:
+        message.delete()
+    except (BadRequest, Forbidden):
+        pass
 
     # 卡崩價錢
     price = int(message.command[-1])
