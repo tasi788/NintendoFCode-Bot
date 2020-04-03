@@ -40,7 +40,7 @@ def veg(client: Client, message: Message):
         # 下午惹
         hour = 12
     now = now.replace(hour=hour, minute=0, second=0, microsecond=0)
-    if not user:
+    if not user.acnh:
         message.reply_text('請先使用 /bindgame 來綁定動物森友會吧！')
         return
     if user.acnh.veg:
