@@ -6,7 +6,7 @@ from dateutil import tz
 from pyrogram import Client, Filters, Message
 
 from ..functions import check_fcode, db_tools, keyboard
-from ..types import VegData, acnh
+from ..types import VegData
 from ..types import user as users
 
 timezone = tz.gettz('Asia/Taipei')
