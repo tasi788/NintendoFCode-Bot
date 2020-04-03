@@ -1,5 +1,4 @@
-from pyrogram import (InlineKeyboardButton, InlineKeyboardMarkup,
-                      InlineQueryResultArticle, InputTextMessageContent)
+from pyrogram import InlineQueryResultArticle, InputTextMessageContent
 
 from ...game import gamelist
 
