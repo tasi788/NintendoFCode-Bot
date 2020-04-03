@@ -1,5 +1,8 @@
-from typing import List
 from dataclasses import dataclass, field
+from datetime import datetime
+from typing import List
+
+
 @dataclass
 class Invite:
     password: str = field(hash=False, repr=True, compare=False, default=None)
@@ -7,7 +10,7 @@ class Invite:
 
 @dataclass
 class VegData:
-    date: str = field(hash=False, repr=True, compare=False, default=None)
+    date: datetime = field(hash=False, repr=True, compare=False, default=None)
     price: int = field(hash=False, repr=True, compare=False, default=None)
 
 
