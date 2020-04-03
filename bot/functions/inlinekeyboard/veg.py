@@ -1,7 +1,5 @@
-from pyrogram import (InlineKeyboardButton, InlineKeyboardMarkup,
-                      InlineQueryResultArticle, InputTextMessageContent)
-
 from .. import configure
+from pyrogram import InlineQueryResultArticle, InputTextMessageContent
 
 
 def veg(user_id: int = 0, price: int = 0):
