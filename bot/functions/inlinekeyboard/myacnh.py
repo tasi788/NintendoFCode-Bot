@@ -25,7 +25,7 @@ def myacnh(user: users):
     else:
         text += '因為[隱私設定]({url})因此不顯示好友代碼。'.format(
             url='t.me/NintendoFCode_bot?start=privacy')
-    text = InputTextMessageContent(text)
+    text = InputTextMessageContent(text, disable_web_page_preview=True)
 
     result.append(
         InlineQueryResultArticle(
