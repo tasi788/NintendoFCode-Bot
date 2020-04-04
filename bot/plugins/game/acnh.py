@@ -22,15 +22,16 @@ def check_func(_, message: Message):
 @Client.on_message(Filters.create(check_func), group=1)
 def acnh(client: Client, message: Message):
     message.command = message.text.split()
-    if len(message.command) == 2:
-        text = '那我們就快點開始吧狸！'
-        message.reply_text(text, reply_markup=keyboard.bindacnh())
-        return
 
     try:
         message.delete()
     except (BadRequest, Forbidden):
         pass
+
+    if len(message.command) == 2:
+        text = '那我們就快點開始吧狸！'
+        message.reply_text(text, reply_markup=keyboard.bindacnh())
+        return
 
     parser = argparse.ArgumentParser()
     parser.add_argument('-n', type=str)
