@@ -1,10 +1,11 @@
 from pyrogram import InlineQueryResultArticle, InputTextMessageContent
 
+from ...functions import configure
 from ...game import gamelist
 
 
 def bindgame():
-    base_url = 'https://raw.githubusercontent.com/tasi788/NintendoFCode-Bot/%E5%A4%A7%E9%A0%AD%E8%8F%9C%E5%8A%9F%E8%83%BD/bot/statics/games/'
+    base_url = configure.get('statics', 'base_url')
     result = list()
 
     for game in gamelist():
