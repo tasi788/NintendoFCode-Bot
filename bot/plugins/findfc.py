@@ -22,6 +22,10 @@ def findfc(client: Client, message: Message):
 
     # fetch id from username
     if not Filters.reply(message):
+        if len(message.command) < 2:
+            text = '你沒有輸入 username 呀'
+            message.reply_text(text)
+            return
         username = message.command[1]
 
         # check failure.
