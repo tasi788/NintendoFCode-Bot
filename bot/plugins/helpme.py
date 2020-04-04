@@ -4,13 +4,17 @@ from pyrogram import Client, Filters, Message
 def check_func(_, message: Message):
     if Filters.forwarded(message):
         return False
-    if Filters.command('help')(message):
-        return True
-    if Filters.command('start')(message):
-        if len(message.command) == 1:
-            return True
     if Filters.edited(message):
         return False
+    if Filters.command('help')(message):
+        return True
+
+    message.command = message.text.split()
+    if Filters.command('start')(message):
+        if message.command[1].lower() == 'help':
+            return True
+        if len(message.command) == 1:
+            return True
 
 
 @Client.on_message(Filters.create(check_func))

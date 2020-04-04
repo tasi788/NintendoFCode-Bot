@@ -6,13 +6,10 @@ from bot.functions import db_tools
 def check_func(_, message: Message):
     if Filters.forwarded(message):
         return False
-    if Filters.command('start')(message):
-        if len(message.command) <= 1:
-            return False
-        if message.command[1].lower() == 'addfc':
-            return True
     if Filters.edited(message):
         return False
+    if Filters.command('start')(message) and len(message.command) > 1 and message.command[1].lower() == 'addfc':
+        return True
 
 
 @Client.on_message(Filters.create(check_func))
