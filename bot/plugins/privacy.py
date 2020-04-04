@@ -3,7 +3,21 @@ from pyrogram import Client, Filters, Message
 from bot.functions import db_tools, keyboard
 
 
-@Client.on_message(Filters.command(['privacy']) & ~(Filters.forwarded) & ~(Filters.edited))
+def check_func(_, message: Message):
+    if Filters.forwarded(message):
+        return False
+    if Filters.edited(message):
+        return False
+    if Filters.command('privacy')(message):
+        return True
+    if Filters.command('start')(message):
+        if len(message.command) <= 1:
+            return False
+        if message.command[1].lower() == 'privacy':
+            return True
+
+
+@Client.on_message(Filters.create(check_func))
 def privacy(client: Client, message: Message):
     if not Filters.private(message):
         text = '隱私設定請私訊我來進行設定不然會被看光光 ¯\_(ツ)_/¯'

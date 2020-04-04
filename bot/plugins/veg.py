@@ -63,9 +63,13 @@ def veg(client: Client, message: Message):
     mongo_update = {'$set': {'acnh.veg': vegs}}
     mongo.nintendo.update_one(mongo_query, mongo_update)
     text = '#動森友 #AnimalCrossing\n' \
-           '大頭菜價格：`{price}` 鈴錢\n' \
-           '好友代碼：`{fcode}`'.format(
-               price=price,
-               fcode=user.fcode
+           '大頭菜價格：`{price}` 鈴錢\n'.format(
+               price=price
            )
-    message.reply_text(text, reply_markup=keyboard.veg())
+    if not user.privacy:
+        text += '好友代碼：`{fcode}`'.format(fcode=user.fcode)
+    else:
+        text += '因為[隱私設定]({url})因此不顯示好友代碼。'.format(
+            url='t.me/NintendoFCode_bot?start=privacy')
+    message.reply_text(text, reply_markup=keyboard.veg(),
+                       disable_web_page_preview=True)
