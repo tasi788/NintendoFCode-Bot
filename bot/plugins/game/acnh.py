@@ -58,7 +58,7 @@ def acnh(client: Client, message: Message):
         return
 
     user = from_dict(data_class=users, data=mongo_result)
-    text = '#動森友 #AnimalCrossing\n' \
+    text = '#動物森友 #AnimalCrossing\n' \
         '島名：<code>{island}</code>\n' \
         '特產：#{fruit}\n'.format(
             island=escape(user.acnh.name),
