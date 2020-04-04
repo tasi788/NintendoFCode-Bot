@@ -1,10 +1,11 @@
-from collections import namedtuple
 from time import sleep
 
+from dacite import from_dict
 from pyrogram import Client, Filters, Message
 from pyrogram.errors import BadRequest, FloodWait
 
-from bot.functions import db_tools
+from ..functions import db_tools
+from ..types import user as users
 
 
 class Find:
@@ -54,26 +55,18 @@ def findfc(client: Client, message: Message):
             username=message.reply_to_message.from_user.username) if message.reply_to_message.from_user.username else ''
     if user_id:
         # make query to get ready.
-        query = {'chat.id': user_id}
-        query_result = mongo.nintendo.find_one(query)
-        if not isinstance(query_result, dict):
+        mongo_query = {'chat.id': user_id}
+        mongo_result = mongo.nintendo.find_one(mongo_query)
+        if not isinstance(mongo_result, dict):
             text = find_result.NOTEXIST
         else:
-            # remove failed keys()
-            query_result.pop('_id')
-
             # make it to an obkect.
-            user = namedtuple("User", query_result.keys())(
-                *query_result.values())
-
+            user = from_dict(data_class=users, data=mongo_result)
             # privacy is basic human right hex project.
-            if 'privacy' in query_result.keys():
-                if user.privacy:
-                    text = find_result.NOTVISBLE
-                else:
-                    text = find_result.FOUND.format(
-                        username=username, fcode=user.fcode)
+            if user.privacy:
+                text = find_result.NOTVISBLE
             else:
                 text = find_result.FOUND.format(
                     username=username, fcode=user.fcode)
+
     message.reply_text(text, parse_mode='markdown')
