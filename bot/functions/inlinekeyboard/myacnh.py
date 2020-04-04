@@ -20,7 +20,7 @@ def myacnh(user: users):
     if user.acnh.veg:
         text += '大頭菜價格：<code>{price}</code> 鈴錢\n'.format(
             price=user.acnh.veg[-1].price)
-    if user.privacy:
+    if not user.privacy:
         text += '好友代碼：<code>{fcode}</code>'.format(fcode=user.fcode)
     else:
         text += '因為[隱私設定]({url})因此不顯示好友代碼。'.format(
