@@ -15,6 +15,11 @@ timezone = tz.gettz('Asia/Taipei')
 
 @Client.on_message(Filters.command('acnh') & ~(Filters.edited) & ~(Filters.forwarded))
 def veg(client: Client, message: Message):
+    try:
+        message.delete()
+    except (BadRequest, Forbidden):
+        pass
+
     if len(message.command) < 2:
         return
     if len(message.command) < 3:
@@ -25,11 +30,6 @@ def veg(client: Client, message: Message):
         text = '請先使用 `/addfc` 來新增自己的好友代碼吧！\n'
         message.reply_text(text, parse_mode='markdown')
         return
-
-    try:
-        message.delete()
-    except (BadRequest, Forbidden):
-        pass
 
     # 卡崩價錢
     price = int(message.command[-1])
