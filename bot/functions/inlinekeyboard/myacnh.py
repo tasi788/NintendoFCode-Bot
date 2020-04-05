@@ -3,7 +3,6 @@ from html import escape
 from pyrogram import InlineQueryResultArticle, InputTextMessageContent
 
 from ...functions import keyboard
-from ...game import gamelist
 from ...types import user as users
 
 
