@@ -10,7 +10,6 @@ def veg(user_id: int = 0, price: int = 0):
         text = InputTextMessageContent(
             '請先空格後再輸入正確的價格。\n例：`@NintendoFCode_bot acnh veg 153`')
         short = '請先空格後再輸入正確的價格。'
-        keyboard = None
 
     money_icon = configure.get('ACNH', 'money')
     result = [
