@@ -3,7 +3,7 @@ import re
 
 from pyrogram import Client, Filters, Message
 
-from bot.functions import db_tools
+from ..functions import db_tools
 
 
 @Client.on_message(Filters.command(['addfc', 'add']) & ~(Filters.forwarded) & ~(Filters.edited))
